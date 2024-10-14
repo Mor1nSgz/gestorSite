@@ -27,10 +27,15 @@ export class EstoqueComponent {
     return this.aberto ? 'close' : 'add';
   }
 
-  abrirPopup(){
+  criarProd(){
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '60%'
     })
+
+    dialogRef.afterOpened().subscribe(() => {
+      const instancia = dialogRef.componentInstance;
+      instancia.popups = 'pop1';
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -41,6 +46,25 @@ export class EstoqueComponent {
         this.items.push({ nome: this.titulo, descricao: this.desc, img: receiveImg });
       }
     });
+  }
+
+  addQuant(){
+    if(this.items.length)
+    {
+      const dialogRef = this.dialog.open(PopupComponent, {
+        width: '60%'
+      })
+  
+      dialogRef.afterOpened().subscribe(() => {
+        const instancia = dialogRef.componentInstance;
+        instancia.popups = 'pop2';
+      });
+    }
+    else
+    {
+      alert("Cuidado!");
+    }
+    
   }
 
   editaProd(){

@@ -12,8 +12,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class PopupComponent {
   // https://www.youtube.com/watch?v=zUp3Unc-ynM
 
+  public popups: string = '';
   constructor(private ref: MatDialogRef<PopupComponent>){}
   
+  quant: number = 0;
+  busc: any;
+
   formu = new FormGroup({
     campoTit: new FormControl(''),
     campoDesc: new FormControl('')
@@ -26,7 +30,6 @@ export class PopupComponent {
     this.ref.close({titulo: dadoTit, desc: dadoDesc, imagem: this.busc});
   }
 
-  busc: any;
 
   pegarImg(event: any){
     if(event.target.files){
@@ -38,5 +41,8 @@ export class PopupComponent {
     }
   } 
 
+  aumentQnt(){
+    
+  }
 
 }

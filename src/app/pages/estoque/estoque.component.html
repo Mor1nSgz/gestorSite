@@ -6,6 +6,7 @@
   <button mat-icon-button (click)="editaProd()">
     <mat-icon>mode_edit</mat-icon>
   </button>
+  <input type="checkbox" />
 </div>
 
 <div class="btnBall"  (click)="flyout()">
@@ -13,7 +14,7 @@
 </div>
 
 <div class="flyout" *ngIf="aberto">
-  <a (click)="abrirPopup()">Criar Produto</a>
+  <a (click)="criarProd()">Criar Produto</a>
   <hr>
-  <a (click)="selecProd()">Adicionar quantidade</a>
+  <a (click)="addQuant()">Adicionar quantidade</a>
 </div>

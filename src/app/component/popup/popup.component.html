@@ -1,27 +1,45 @@
-<h1 mat-dialog-title>testando</h1>
+<h1 mat-dialog-title>{{popups === 'pop1' ? 'pop1' : 'pop2'}}</h1>
 
-<div mat-dialog-content>
-  <form class="content" [formGroup]="formu">
-    <div class="putImg">
-      <img [src]="busc" />
-      <input type="file" (change)="pegarImg($event)" />
-    </div>
+<ng-container *ngIf="popups === 'pop1'">
+  <div mat-dialog-content>
+    <form class="content" [formGroup]="formu">
+      <div class="putImg">
+        <img [src]="busc" />
+        <input type="file" (change)="pegarImg($event)" />
+      </div>
 
-    <div class="putInfo">
-      <mat-form-field class="larg">
-        <mat-label >Titulo</mat-label>
-        <input matInput formControlName="campoTit" placeholder="nome do produto"/>
-      </mat-form-field>
+      <div class="putInfo">
+        <mat-form-field class="larg">
+          <mat-label >Titulo</mat-label>
+          <input matInput formControlName="campoTit" placeholder="nome do produto"/>
+        </mat-form-field>
 
-      <mat-form-field class="larg">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput formControlName="campoDesc" placeholder="adicione uma descrição do produto aqui"></textarea>
-      </mat-form-field>
-    </div>
-  </form>
-</div>
+        <mat-form-field class="larg">
+          <mat-label>Textarea</mat-label>
+          <textarea matInput formControlName="campoDesc" placeholder="adicione uma descrição do produto aqui"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="popups === 'pop2'">
+  <img class="putImg" [src]="busc" />
+  <mat-form-field class="larg">
+    <input matInput type="number" placeholder="Quantidade"/>
+  </mat-form-field>
+
+  <mat-form-field class="larg">
+    <input matInput type="date" placeholder="Data de Validade"/>
+  </mat-form-field>
+
+  <mat-form-field class="larg">
+    <input matInput type="text" placeholder="Preço unitário"/>
+  </mat-form-field>
+</ng-container>
 
 <div mat-dialog-actions>
-  <button class="btn btn-small" >excluir item</button>
+  <button class="btn btn-small"  >excluir item</button>
   <button class="btn btn-small" (click)="enviar()" >salvar item</button>
 </div>
+
